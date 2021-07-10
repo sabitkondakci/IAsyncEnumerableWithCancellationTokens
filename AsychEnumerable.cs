@@ -30,7 +30,7 @@ namespace IAsyncEnumerable
 
             while (line != null)
             {
-                line = await reader.ReadLineAsync().ConfigureAwait(false);
+                line = await reader.ReadLineAsync();// ConfigureAwait(false); .Net Legacy Code
                 await Task.Delay(1000);
                 yield return line;
             }
