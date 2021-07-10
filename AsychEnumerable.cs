@@ -30,7 +30,7 @@ namespace IAsyncEnumerable
 
             while (line != null)
             {
-                line = await reader.ReadLineAsync();// ConfigureAwait(false); .Net Legacy Code
+                line = await reader.ReadLineAsync().ConfigureAwait(false); // IO Stream may block UI thread, this shouldn'b be avoided.
                 await Task.Delay(1000);
                 yield return line;
             }
