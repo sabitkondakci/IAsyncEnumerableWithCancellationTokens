@@ -21,6 +21,18 @@ namespace IAsyncEnumerable
             {
                 Console.WriteLine(item);
             }
+
+            //same approach
+            /*
+
+            await using IAsyncEnumerator<string> enumerator = perLine.GetAsyncEnumerator();
+            while (await enumerator.MoveNextAsync())
+            {
+                var item = enumerator.Current;
+                Console.WriteLine(item);
+            }
+
+            */
         }
 
         static async IAsyncEnumerable<string> GetLineAsync(string filePath)
