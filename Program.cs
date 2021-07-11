@@ -35,13 +35,24 @@ namespace IAsyncEnu
         {
             var staffList = GetStaffList(1_000_000);
 
-            foreach (var item in staffList)
+            //foreach (var item in staffList)
+            //{
+            //    if (item.Id <= 1000)
+            //        Console.WriteLine($"Id:{item.Id} Name:{item.Name} DepartmentID:{item.DepartmentId} Salary:{item.Salary}");
+            //    else
+            //        break;
+
+            //}
+
+            // same output different code
+            using IEnumerator<Staff> enumerator = staffList.GetEnumerator();
+            while (enumerator.MoveNext())
             {
+                var item = enumerator.Current;
                 if (item.Id <= 1000)
                     Console.WriteLine($"Id:{item.Id} Name:{item.Name} DepartmentID:{item.DepartmentId} Salary:{item.Salary}");
                 else
                     break;
-
             }
         }
     }
