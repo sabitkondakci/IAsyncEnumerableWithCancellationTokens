@@ -17,12 +17,12 @@ namespace IAsyncEnumerable
             var path = Path.Combine(Environment.CurrentDirectory,"sample.txt");
 
             var perLine = GetLineAsync(path);
-            await foreach (var item in perLine)
+            await foreach (var item in perLine.ConfigureAwait(false))
             {
                 Console.WriteLine(item);
             }
 
-            //same approach
+            //same 
             /*
 
             await using IAsyncEnumerator<string> enumerator = perLine.GetAsyncEnumerator();
